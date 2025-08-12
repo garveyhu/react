@@ -79,7 +79,10 @@ const Card = () => {
 };
 
 const StyledWrapper = styled.div`
-  /* Design Inspired by one of Stefan Devai's Design on Dribble */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 
   .main_wrapper {
     display: flex;

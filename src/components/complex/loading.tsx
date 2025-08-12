@@ -1,29 +1,15 @@
 import styled from 'styled-components';
 
-const Loading = () => {
+const Loader = () => {
   return (
     <StyledWrapper>
-      <div className="capybaraloader">
-        <div className="capybara">
-          <div className="capyhead">
-            <div className="capyear">
-              <div className="capyear2" />
-            </div>
-            <div className="capyear" />
-            <div className="capymouth">
-              <div className="capylips" />
-              <div className="capylips" />
-            </div>
-            <div className="capyeye" />
-            <div className="capyeye" />
-          </div>
-          <div className="capyleg" />
-          <div className="capyleg2" />
-          <div className="capyleg2" />
-          <div className="capy" />
-        </div>
-        <div className="loader">
-          <div className="loaderline" />
+      <div className="loader-wrapper">
+        <div className="packman" />
+        <div className="dots">
+          <div className="dot" />
+          <div className="dot" />
+          <div className="dot" />
+          <div className="dot" />
         </div>
       </div>
     </StyledWrapper>
@@ -31,201 +17,119 @@ const Loading = () => {
 };
 
 const StyledWrapper = styled.div`
-  .capybaraloader {
-    width: 14em;
-    height: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  .loader-wrapper {
     position: relative;
-    z-index: 1;
-    --color: rgb(204, 125, 45);
-    --color2: rgb(83, 56, 28);
-    transform: scale(0.75);
+    /* 居中由外层flex控制 */
+    margin: auto;
   }
-  .capybara {
-    width: 100%;
-    height: 7.5em;
-    position: relative;
-    z-index: 1;
-  }
-  .loader {
-    width: 100%;
-    height: 2.5em;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-  }
-  .capy {
-    width: 85%;
-    height: 100%;
-    background: linear-gradient(var(--color), 90%, var(--color2));
-    border-radius: 45%;
-    position: relative;
-    z-index: 1;
-    animation: movebody 1s linear infinite;
-  }
-  .capyhead {
-    width: 7.5em;
-    height: 7em;
-    bottom: 0em;
-    right: 0em;
+
+  .loader-wrapper .packman::before {
+    content: '';
     position: absolute;
-    background-color: var(--color);
-    z-index: 3;
-    border-radius: 3.5em;
-    box-shadow: -1em 0em var(--color2);
-    animation: movebody 1s linear infinite;
+    width: 50px;
+    height: 25px;
+    background-color: #868686;
+    border-radius: 100px 100px 0 0;
+    transform: translate(-50%, -50%);
+    animation: pac-top 0.5s linear infinite;
+    transform-origin: center bottom;
   }
-  .capyear {
-    width: 2em;
-    height: 2em;
-    background: linear-gradient(-45deg, var(--color), 90%, var(--color2));
-    top: 0em;
-    left: 0em;
-    border-radius: 100%;
+
+  .loader-wrapper .packman::after {
+    content: '';
     position: absolute;
-    overflow: hidden;
-    z-index: 3;
+    width: 50px;
+    height: 25px;
+    background-color: #868686;
+    border-radius: 0 0 100px 100px;
+    transform: translate(-50%, 50%);
+    animation: pac-bot 0.5s linear infinite;
+    transform-origin: center top;
   }
-  .capyear:nth-child(2) {
-    left: 5em;
-    background: linear-gradient(25deg, var(--color), 90%, var(--color2));
+
+  @keyframes pac-top {
+    0% {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+
+    50% {
+      transform: translate(-50%, -50%) rotate(-30deg);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) rotate(0);
+    }
   }
-  .capyear2 {
-    width: 100%;
-    height: 1em;
-    background-color: var(--color2);
-    bottom: 0em;
-    left: 0.5em;
-    border-radius: 100%;
+
+  @keyframes pac-bot {
+    0% {
+      transform: translate(-50%, 50%) rotate(0);
+    }
+
+    50% {
+      transform: translate(-50%, 50%) rotate(30deg);
+    }
+
+    100% {
+      transform: translate(-50%, 50%) rotate(0);
+    }
+  }
+
+  .dots .dot {
     position: absolute;
-    transform: rotate(-45deg);
-  }
-  .capymouth {
-    width: 3.5em;
-    height: 2em;
-    background-color: var(--color2);
-    position: absolute;
-    bottom: 0em;
-    left: 2.5em;
+    z-index: -1;
+    top: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 0.5em;
-  }
-  .capylips {
-    width: 0.25em;
-    height: 0.75em;
-    border-radius: 100%;
-    transform: rotate(-45deg);
-    background-color: var(--color);
-  }
-  .capylips:nth-child(2) {
-    transform: rotate(45deg);
-  }
-  .capyeye {
-    width: 2em;
-    height: 0.5em;
-    background-color: var(--color2);
-    position: absolute;
-    bottom: 3.5em;
-    left: 1.5em;
-    border-radius: 5em;
-    transform: rotate(45deg);
-  }
-  .capyeye:nth-child(4) {
-    transform: rotate(-45deg);
-    left: 5.5em;
-    width: 1.75em;
-  }
-  .capyleg {
-    width: 6em;
-    height: 5em;
-    bottom: 0em;
-    left: 0em;
-    position: absolute;
-    background: linear-gradient(var(--color), 95%, var(--color2));
-    z-index: 2;
-    border-radius: 2em;
-    animation: movebody 1s linear infinite;
-  }
-  .capyleg2 {
-    width: 1.75em;
-    height: 3em;
-    bottom: 0em;
-    left: 3.25em;
-    position: absolute;
-    background: linear-gradient(var(--color), 80%, var(--color2));
-    z-index: 2;
-    border-radius: 0.75em;
-    box-shadow: inset 0em -0.5em var(--color2);
-    animation: moveleg 1s linear infinite;
-  }
-  .capyleg2:nth-child(3) {
-    width: 1.25em;
-    left: 0.5em;
-    height: 2em;
-    animation: moveleg2 1s linear infinite 0.075s;
+    background: #9c9c9c;
   }
 
-  @keyframes moveleg {
+  .dots .dot:nth-child(1) {
+    left: 90px;
+    animation: dot-stage1 0.5s infinite;
+  }
+
+  .dots .dot:nth-child(2) {
+    left: 60px;
+    animation: dot-stage1 0.5s infinite;
+  }
+
+  .dots .dot:nth-child(3) {
+    left: 30px;
+    animation: dot-stage1 0.5s infinite;
+  }
+
+  .dots .dot:nth-child(4) {
+    left: 10px;
+    animation: dot-stage2 0.5s infinite;
+  }
+
+  @keyframes dot-stage1 {
     0% {
-      transform: rotate(-45deg) translateX(-5%);
+      transform: translate(0, 0);
     }
-    50% {
-      transform: rotate(45deg) translateX(5%);
-    }
+
     100% {
-      transform: rotate(-45deg) translateX(-5%);
+      transform: translate(-24px, 0);
     }
   }
 
-  @keyframes moveleg2 {
+  @keyframes dot-stage2 {
     0% {
-      transform: rotate(45deg);
+      transform: scale(1);
     }
-    50% {
-      transform: rotate(-45deg);
-    }
-    100% {
-      transform: rotate(45deg);
-    }
-  }
 
-  @keyframes movebody {
-    0% {
-      transform: translateX(0%);
-    }
-    50% {
-      transform: translateX(2%);
-    }
+    5%,
     100% {
-      transform: translateX(0%);
-    }
-  }
-
-  .loaderline {
-    width: 50em;
-    height: 0.5em;
-    border-top: 0.5em dashed var(--color2);
-    animation: moveline 10s linear infinite;
-  }
-
-  @keyframes moveline {
-    0% {
-      transform: translateX(0%);
-      opacity: 0%;
-    }
-    5% {
-      opacity: 100%;
-    }
-    95% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 0%;
-      transform: translateX(-70%);
+      transform: scale(0);
     }
   }
 `;
 
-export default Loading;
+export default Loader;

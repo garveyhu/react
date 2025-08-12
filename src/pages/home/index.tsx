@@ -3,97 +3,106 @@ import styled from 'styled-components';
 const Input = () => {
   return (
     <StyledWrapper>
-      <div className="input__container">
-        <div className="shadow__input" />
-        <button className="input__button__shadow">
-          <svg
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            height="20px"
-            width="20px"
-          >
-            <path
-              d="M4 9a5 5 0 1110 0A5 5 0 014 9zm5-7a7 7 0 104.2 12.6.999.999 0 00.093.107l3 3a1 1 0 001.414-1.414l-3-3a.999.999 0 00-.107-.093A7 7 0 009 2z"
-              fillRule="evenodd"
-              fill="#17202A"
-            />
+      <div className="container">
+        <div className="search-container">
+          <input className="input" type="text" />
+          <svg viewBox="0 0 24 24" className="search__icon">
+            <g>
+              <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+            </g>
           </svg>
-        </button>
-        <input
-          type="text"
-          name="text"
-          className="input__search"
-          placeholder="What do you want to search?"
-        />
+        </div>
       </div>
     </StyledWrapper>
   );
 };
 
 const StyledWrapper = styled.div`
-  .input__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  .container {
     position: relative;
-    background: rgba(255, 255, 255, 0.664);
-    padding: 10px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    border-radius: 22px;
+    background: linear-gradient(135deg, rgb(179, 208, 253) 0%, rgb(164, 202, 248) 100%);
+    border-radius: 1000px;
+    padding: 10px;
+    display: grid;
+    place-content: center;
+    z-index: 0;
     max-width: 300px;
-    transition: transform 400ms;
-    transform-style: preserve-3d;
-    transform: rotateX(15deg) rotateY(-20deg);
-    perspective: 500px;
+    margin: 0 10px;
   }
 
-  .shadow__input {
+  .search-container {
+    position: relative;
+    width: 100%;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%);
+    padding: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-container::after,
+  .search-container::before {
     content: '';
-    position: absolute;
     width: 100%;
     height: 100%;
-    left: 0;
-    bottom: 0;
+    border-radius: inherit;
+    position: absolute;
+  }
+
+  .search-container::before {
+    top: -1px;
+    left: -1px;
+    background: linear-gradient(0deg, rgb(218, 232, 247) 0%, rgb(255, 255, 255) 100%);
     z-index: -1;
-    filter: blur(30px);
-    border-radius: 20px;
-    background-color: #999cff;
-    background-image:
-      radial-gradient(at 85% 51%, hsla(60, 60%, 61%, 1) 0px, transparent 50%),
-      radial-gradient(at 74% 68%, hsla(235, 69%, 77%, 1) 0px, transparent 50%),
-      radial-gradient(at 64% 79%, hsla(284, 72%, 73%, 1) 0px, transparent 50%),
-      radial-gradient(at 75% 16%, hsla(283, 60%, 72%, 1) 0px, transparent 50%),
-      radial-gradient(at 90% 65%, hsla(153, 70%, 64%, 1) 0px, transparent 50%),
-      radial-gradient(at 91% 83%, hsla(283, 74%, 69%, 1) 0px, transparent 50%),
-      radial-gradient(at 72% 91%, hsla(213, 75%, 75%, 1) 0px, transparent 50%);
   }
 
-  .input__button__shadow {
-    cursor: pointer;
-    border: none;
-    background: none;
-    transition:
-      transform 400ms,
-      background 400ms;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 12px;
-    padding: 5px;
+  .search-container::after {
+    bottom: -1px;
+    right: -1px;
+    background: linear-gradient(0deg, rgb(163, 206, 255) 0%, rgb(211, 232, 255) 100%);
+    box-shadow:
+      rgba(79, 156, 232, 0.7019607843) 3px 3px 5px 0px,
+      rgba(79, 156, 232, 0.7019607843) 5px 5px 20px 0px;
+    z-index: -2;
   }
 
-  .input__button__shadow:hover {
-    background: rgba(255, 255, 255, 0.411);
-  }
-
-  .input__search {
+  .input {
+    padding: 10px;
     width: 100%;
-    border-radius: 20px;
-    outline: none;
+    background: linear-gradient(135deg, rgb(218, 232, 247) 0%, rgb(214, 229, 247) 100%);
     border: none;
-    padding: 8px;
-    position: relative;
+    color: #9ebcd9;
+    font-size: 20px;
+    border-radius: 50px;
+  }
+
+  .input:focus {
+    outline: none;
+    background: linear-gradient(135deg, rgb(239, 247, 255) 0%, rgb(214, 229, 247) 100%);
+  }
+
+  .search__icon {
+    width: 50px;
+    aspect-ratio: 1;
+    border-left: 2px solid white;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-radius: 50%;
+    padding-left: 12px;
+    margin-right: 10px;
+  }
+
+  .search__icon:hover {
+    border-left: 3px solid white;
+  }
+
+  .search__icon path {
+    fill: white;
   }
 `;
 
