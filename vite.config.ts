@@ -18,4 +18,18 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
+  server: {
+    proxy: {
+      '/development': {
+        target: 'http://127.0.0.1:8888',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/development/, ''),
+      },
+      '/production': {
+        target: 'https://www.archeruu.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/production/, ''),
+      },
+    },
+  },
 });
