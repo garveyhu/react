@@ -9,6 +9,11 @@ const routes: RouteItem[] = [
     meta: { title: '首页', auth: false },
   },
   {
+    path: '/search',
+    component: lazy(() => import('@/pages/complex/search')),
+    meta: { title: '搜索', auth: false },
+  },
+  {
     path: '*',
     component: lazy(() => import('@/pages/complex/404')),
     meta: { title: '404', auth: false },
