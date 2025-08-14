@@ -7,6 +7,6 @@ export interface ResultVO<T = any> {
 }
 
 export interface PageParams {
-  pageNum: number;
-  pageSize: number;
+  pageNum?: number;
+  pageSize?: number;
 }

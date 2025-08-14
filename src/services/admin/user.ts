@@ -10,36 +10,36 @@ export const userService = {
   /**
    * 新增用户信息
    */
-  insert: (user: UserSaveDTO): Promise<ResultVO<any>> => {
-    return post('/user/insert', user);
+  insert: (saveDTO: UserSaveDTO): Promise<ResultVO<any>> => {
+    return post('/sysUser/insert', saveDTO);
   },
 
   /**
    * 修改用户信息
    */
-  update: (user: UserSaveDTO): Promise<ResultVO<any>> => {
-    return post('/user/update', user);
+  update: (saveDTO: UserSaveDTO): Promise<ResultVO<any>> => {
+    return post('/sysUser/update', saveDTO);
   },
 
   /**
    * 删除用户信息
    */
-  delete: (requestVO: UserQueryDTO): Promise<ResultVO<any>> => {
-    return post('/user/delete', requestVO);
+  delete: (queryDTO: UserQueryDTO): Promise<ResultVO<any>> => {
+    return post('/sysUser/delete', queryDTO);
   },
 
   /**
    * 查询用户信息（根据id）
    */
-  get: (requestVO: UserQueryDTO): Promise<ResultVO<UserVO>> => {
-    return post('/user/get', requestVO);
+  get: (queryDTO: UserQueryDTO): Promise<ResultVO<UserVO>> => {
+    return post('/sysUser/get', queryDTO);
   },
 
   /**
    * 查询用户信息（分页）
    */
-  page: (requestVO: UserQueryDTO): Promise<ResultVO<UserVO[]>> => {
-    return post('/user/page', requestVO);
+  page: (queryDTO: UserQueryDTO): Promise<ResultVO<UserVO[]>> => {
+    return post('/sysUser/page', queryDTO);
   },
 };
 
