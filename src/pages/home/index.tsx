@@ -15,6 +15,19 @@ const Input = () => {
       </p>
       <div className="text-center">
         <input type="text" className="text-center" />
+        <br /> <br />
+        <span className="text-center">这是一个span元素</span>
+        <span className="text-center">这是另一个span元素</span> <br />
+        <p>这是一个HTML的&lt;p&gt;元素</p>
+      </div>
+      <div className="text-center">
+        <u>这是一个下划线文本</u>
+        <s>这是一个删除线文本</s>
+        <i>这是一个斜体文本</i>
+        <mark>这是一个高亮文本</mark>
+        <p>
+          CuSO<sub>4</sub> <br /> O<sup>2</sup>
+        </p>
       </div>
     </>
   );
