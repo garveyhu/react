@@ -4,7 +4,7 @@ const Input = () => {
   return (
     <>
       <h1 className="text-center">标题</h1>
-      <h2 className="text-center">Find what you need</h2>
+      <h2 className="text-center subtitle">Find what you need</h2>
       <h3 className="text-center">what are you looking for?</h3>
       <h4 className="text-center">Search for items, articles, or anything else</h4>
       <hr />
