@@ -14,6 +14,11 @@ const routes: RouteItem[] = [
     meta: { title: '搜索', auth: false },
   },
   {
+    path: '/login',
+    component: lazy(() => import('@/pages/login')),
+    meta: { title: '登录', auth: false },
+  },
+  {
     path: '*',
     component: lazy(() => import('@/pages/complex/404')),
     meta: { title: '404', auth: false },
