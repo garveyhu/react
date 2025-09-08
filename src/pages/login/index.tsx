@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import MuiCard from '@mui/material/Card';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
@@ -15,7 +14,7 @@ import { styled } from '@mui/material/styles';
 
 import * as React from 'react';
 
-import { FacebookIcon, GoogleIcon, SitemarkIcon } from './components/CustomIcons';
+import { SitemarkIcon } from './components/CustomIcons';
 import ForgotPassword from './components/ForgotPassword';
 import AppTheme from './shared-theme/AppTheme';
 import ColorModeSelect from './shared-theme/ColorModeSelect';
@@ -178,7 +177,54 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
               label="Remember me"
             />
             <ForgotPassword open={open} handleClose={handleClose} />
-            <Button type="submit" fullWidth variant="contained" onClick={validateInputs}>
+            <Button
+              type="submit"
+              fullWidth
+              variant="outlined"
+              onClick={validateInputs}
+              sx={{
+                height: '45px',
+                position: 'relative',
+                backgroundColor: 'transparent !important',
+                cursor: 'pointer',
+                border: '2px solid #252525 !important',
+                overflow: 'hidden',
+                borderRadius: '30px !important',
+                color: '#333 !important',
+                transition: 'all 0.2s ease-in-out',
+                fontWeight: '800 !important',
+                letterSpacing: '4px',
+                textTransform: 'none',
+                zIndex: 1,
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  left: '50%',
+                  top: '50%',
+                  transform: 'translate(-50%, -50%) scale(0)',
+                  transition: 'all 0.2s ease-in-out',
+                  backgroundColor: '#333',
+                  borderRadius: '30px',
+                  width: 'calc(100% + 4px)',
+                  height: 'calc(100% + 4px)',
+                  zIndex: -1,
+                },
+                '&:hover': {
+                  boxShadow: '0 0 20px rgba(37, 37, 37, 0.3) !important',
+                  color: '#ffffff !important',
+                  border: '2px solid #333 !important',
+                  '&::before': {
+                    transform: 'translate(-50%, -50%) scale(1)',
+                  },
+                },
+                '& .MuiButton-label, & span, & *': {
+                  position: 'relative',
+                  zIndex: 10,
+                  color: 'inherit !important',
+                  transition: 'color 0.2s ease-in-out !important',
+                },
+              }}
+            >
               Sign in
             </Button>
             <Link
@@ -190,35 +236,6 @@ export default function SignIn(props: { disableCustomTheme?: boolean }) {
             >
               Forgot your password?
             </Link>
-          </Box>
-          <Divider>or</Divider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign in with Google')}
-              startIcon={<GoogleIcon />}
-            >
-              Sign in with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              onClick={() => alert('Sign in with Facebook')}
-              startIcon={<FacebookIcon />}
-            >
-              Sign in with Facebook
-            </Button>
-            <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
-              <Link
-                href="/material-ui/getting-started/templates/sign-in/"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}
-              >
-                Sign up
-              </Link>
-            </Typography>
           </Box>
         </Card>
       </SignInContainer>
